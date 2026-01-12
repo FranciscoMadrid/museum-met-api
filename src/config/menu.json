@@ -1,0 +1,16 @@
+{
+  "nav": [
+    {
+      "name": "Exhibitions",
+      "url": "/exhibitions"
+    },
+    {
+      "name": "Artworks",
+      "url": "/artworks"
+    },
+    {
+      "name": "About Us",
+      "url": "/about-us"
+    }
+  ]
+}

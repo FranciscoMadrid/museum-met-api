@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets"
+import LogoPlaceholder from "/public/images/placeholder/Logo Placeholder.png"
+import NavHeaders from '@/config/menu.json'
+export interface HeaderProps {
+  logo_image?: ImageBitmap,
+  logo_title?: string
+}
+const {logo_image, logo_title} = Astro.props;
+---
+
+<nav class='flex flex-row gap-2 items-center p-4 justify-between bg-blue-500'>
+  <!-- Logo with Title -->
+  <a href="/" class='flex flex-row items-center'>
+    <Image
+      width={120}
+      height={160}
+      src={logo_image ? logo_image : LogoPlaceholder}
+      alt={logo_image ? logo_image :LogoPlaceholder}
+    />
+    <span>
+      {logo_title}
+    </span>
+  </a>
+
+  <ul class="flex flex-row gap-4 justify-between">
+    {NavHeaders.nav.map((item) => (
+      <li>
+        <a 
+          href={item.url}>
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
