@@ -1,8 +1,18 @@
 ---
 import Base from '@/layouts/Base.astro'
+import Hero from '@/layouts/Partials/Hero.astro'
 import '@/styles/global.css'
+
+import HeroImage from '/public/images/met-museum-hero.avif'
 ---
 
 <Base title='Welcome To Met'>
-	test
+	<Hero 
+		image={HeroImage}
+		height={1200}
+		width={1400}
+		title='Hello World'
+		subTitle={'A random subtitle'}
+		description='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas modi temporibus nam tempore veritatis consequuntur iusto ea a consectetur! Vero est totam numquam, ut impedit id odit maiores saepe unde.'
+	/>
 </Base>

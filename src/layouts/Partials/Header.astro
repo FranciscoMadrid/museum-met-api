@@ -10,7 +10,7 @@ export interface HeaderProps {
 const {logo_image, logo_title} = Astro.props;
 ---
 
-<nav class='flex flex-row gap-2 items-center p-4 justify-between bg-blue-500'>
+<nav class='flex flex-row z-100 gap-2 items-center p-4 justify-between fixed w-full'>
   <!-- Logo with Title -->
   <a href="/" class='flex flex-row items-center'>
     <Image

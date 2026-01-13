@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets"
+import Button from "../components/Button.astro";
+import PlaceHolderImage from '/public/images/placeholder/Image Not Found.png'
+export interface Props {
+  image?: ImageMetadata,
+  title?: string,
+  subTitle?: string,
+  description?: string,
+  width?: number,
+  height?: number
+}
+
+const {
+  image = PlaceHolderImage, 
+  title, 
+  subTitle, 
+  description, 
+  width = 800, 
+  height = 100
+  } = Astro.props;
+---
+
+<section class="relative h-screen w-full overflow-hidden">
+  <Image
+    src={image}
+    alt={title ?? "Hero image"}
+    width={width}
+    height={height}
+    class="absolute inset-0 w-full h-full object-cover object-center"
+  />
+
+  <div class="bg-black/30 absolute top-0 left-0 z-20 h-full w-full"/>
+
+  <!-- Main Content -->
+  <div class="relative z-30 text-white flex flex-col gap-10 max-w-7xl w-full p-10 mx-auto top-1/5">
+    <div class="flex flex-col gap-4">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl text-shadow-lg font-bold">
+        {title}
+      </h1>
+      <span class="text-lg md:text-xl lg:text-2xl font-light">
+        {subTitle}
+      </span>
+      <p class="text-base lg:text-lg font-extralight">
+        {description}
+      </p>
+    </div>
+    <Button
+      isOutline = {false}
+      className="text-white bg-red-500 hover:bg-red-900"
+      buttonText ='Show more'
+    />
+  </div>
+</section>
