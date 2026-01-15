@@ -16,6 +16,7 @@ const {logo_image, logo_title} = Astro.props;
     <Image
       width={120}
       height={160}
+      loading={'eager'}
       src={logo_image ? logo_image : LogoPlaceholder}
       alt={logo_image ? logo_image :LogoPlaceholder}
     />

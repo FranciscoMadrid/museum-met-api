@@ -2,6 +2,17 @@
 import { Image } from "astro:assets"
 import Button from "../components/Button.astro";
 import PlaceHolderImage from '/public/images/placeholder/Image Not Found.png'
+import ArtDisplay from "../components/ArtDisplay.astro";
+
+import {getPublicImages} from '@/lib/util/helper'
+import type { ImageRow } from "@/lib/util/type";
+
+const firstRow: ImageRow = {direction: 'right', src: getPublicImages(0, 10)};
+const secondRow: ImageRow = {direction: 'left', src: getPublicImages(10, 10)};
+const thirdRow: ImageRow = {direction: 'right', src: getPublicImages(20, 10)};
+
+const ImageGrid: ImageRow[] = [firstRow, secondRow, thirdRow]
+
 export interface Props {
   image?: ImageMetadata,
   title?: string,
@@ -22,15 +33,16 @@ const {
 ---
 
 <section class="relative h-screen w-full overflow-hidden">
-  <Image
-    src={image}
-    alt={title ?? "Hero image"}
-    width={width}
-    height={height}
-    class="absolute inset-0 w-full h-full object-cover object-center"
-  />
+  <div class="absolute top-0 left-0 h-full w-full inset-0 z-10">
+    <ArtDisplay
+      imgWidth={160}
+      imgHeight={180}
+      images={ImageGrid}
+      speed={30}
+    />
+  </div>
 
-  <div class="bg-black/30 absolute top-0 left-0 z-20 h-full w-full"/>
+  <div class="bg-black/50 absolute top-0 left-0 z-20 h-full w-full"/>
 
   <!-- Main Content -->
   <div class="relative z-30 text-white flex flex-col gap-10 max-w-7xl w-full p-10 mx-auto top-1/5">

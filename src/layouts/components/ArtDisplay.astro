@@ -1,0 +1,50 @@
+---
+import MarqueeCnt from "./functional components/MarqueeCnt";
+import type { ImageRow } from "@/lib/util/type";
+import { Image } from "astro:assets"
+
+export interface Props {
+  images: ImageRow[],
+  imgWidth?: number,
+  imgHeight?: number,
+  speed?: number
+}
+
+const {
+  images,
+  imgWidth =  160,
+  imgHeight = 200,
+  speed = 50
+} = Astro.props;
+
+const rowsNumber = images.length;
+const rowViewport = 100/rowsNumber;
+---
+
+<section class="flex flex-col items-center h-full bg-gray-500">
+  {images.map((row) => (
+    <MarqueeCnt
+      className="overflow-hidden"
+      direction={row.direction}
+      speed={speed}
+      autoFill={true}
+      client:only="react"
+    >
+      <div 
+        class={`flex flex-row`}
+        style={`height: ${rowViewport}vh`}
+      >
+        {row.src.map((img) => (
+          <Image
+            class={'flex-none object-cover border-2'}
+            loading={'eager'}
+            src={img}
+            alt={img}
+            width={imgWidth}
+            height={imgHeight}
+          />
+        ))}
+      </div>
+    </MarqueeCnt>
+  ))}
+</section>
