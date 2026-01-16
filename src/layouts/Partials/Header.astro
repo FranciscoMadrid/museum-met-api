@@ -2,7 +2,10 @@
 import { Image } from "astro:assets"
 import LogoPlaceholder from "/public/images/placeholder/Logo Placeholder.png"
 import NavHeaders from '@/config/menu.json'
-import NavLink from "../components/NavLink.astro";
+import NavLink from "../components/NavLink";
+
+import MobileNavbar from "../components/functional components/MobileNavbar";
+
 export interface HeaderProps {
   logo_image?: ImageBitmap,
   logo_title?: string
@@ -10,7 +13,7 @@ export interface HeaderProps {
 const {logo_image, logo_title} = Astro.props;
 ---
 
-<nav class='flex flex-row z-100 gap-2 items-center p-4 justify-between fixed w-full'>
+<nav id="navbar" class='flex flex-row z-100 transition duration-200 ease-in-out gap-2 items-center p-4 justify-between fixed w-full'>
   <!-- Logo with Title -->
   <a href="/" class='flex flex-row items-center'>
     <Image
@@ -25,14 +28,36 @@ const {logo_image, logo_title} = Astro.props;
     </span>
   </a>
 
-  <ul class="flex flex-row gap-4 justify-between">
-    {NavHeaders.nav.map((item) => (
+  <ul class="hidden md:flex flex-row gap-4 justify-between text-white">
+    {NavHeaders.nav.map((item, index) => (
       <li>
         <NavLink 
           title={item.name} 
           href={item.url}
+          underlineClassName={`h-0.5 bg-white`}
           hasUnderline={true}/>
       </li>
     ))}
   </ul>
+
+  <MobileNavbar 
+    client:load 
+    navHeaders={NavHeaders}
+    className="block md:hidden"
+  />
 </nav>
+
+<script type="module">
+  const navbar = window.document.getElementById('navbar');
+
+  window.addEventListener('scroll', () => {
+    const isMobile = window.innerWidth < 768;
+    const scrollLimit = isMobile ? 50 : 125;
+
+    if(window.scrollY > scrollLimit){
+      navbar?.classList.add('bg-primary')
+    } else {
+      navbar?.classList.remove('bg-primary')
+    }
+  })
+</script>

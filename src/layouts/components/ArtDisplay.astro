@@ -2,6 +2,7 @@
 import MarqueeCnt from "./functional components/MarqueeCnt";
 import type { ImageRow } from "@/lib/util/type";
 import { Image } from "astro:assets"
+import PlaceHolderImage from '/public/images/placeholder/Image Not Found.png'
 
 export interface Props {
   images: ImageRow[],
@@ -38,8 +39,8 @@ const rowViewport = 100/rowsNumber;
           <Image
             class={'flex-none object-cover border-2'}
             loading={'eager'}
-            src={img}
-            alt={img}
+            src={img ?? PlaceHolderImage}
+            alt={img ?? PlaceHolderImage.src}
             width={imgWidth}
             height={imgHeight}
           />
