@@ -1,7 +1,6 @@
 import type { NavStructure } from '@/lib/util/type';
 import React, { useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoClose } from "react-icons/io5";
 import NavLink from '../NavLink';
 
 interface MobileNavbarProps {

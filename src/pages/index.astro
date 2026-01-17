@@ -1,7 +1,10 @@
 ---
 import Base from '@/layouts/Base.astro'
+import ArticleCnt from '@/layouts/components/ArticleCnt.astro'
+import ArticleDisplay from '@/layouts/components/ArticleDisplay.astro'
 import Hero from '@/layouts/Partials/Hero.astro'
 import '@/styles/global.css'
+
 ---
 
 <Base title='Welcome To Met'>
@@ -10,4 +13,24 @@ import '@/styles/global.css'
 		subTitle={'A random subtitle'}
 		description='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas modi temporibus nam tempore veritatis consequuntur iusto ea a consectetur! Vero est totam numquam, ut impedit id odit maiores saepe unde.'
 	/>
+	<ArticleDisplay>
+		<ArticleCnt
+			title={'Test'}
+			subtitle={'A good subtitle'}
+			reverse={true}
+			content={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sapiente vel nam reiciendis. Id explicabo obcaecati ad sapiente porro cum excepturi doloribus minima at expedita. Asperiores suscipit provident impedit corrupti libero. Aliquam adipisci ad dicta numquam. Dolorem sed, ab doloribus temporibus, enim deleniti amet non quidem provident minima dignissimos velit!'}
+		/>
+		<ArticleCnt
+			title={'Test'}
+			subtitle={'A good subtitle'}
+			reverse={false}
+			content={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sapiente vel nam reiciendis. Id explicabo obcaecati ad sapiente porro cum excepturi doloribus minima at expedita. Asperiores suscipit provident impedit corrupti libero. Aliquam adipisci ad dicta numquam. Dolorem sed, ab doloribus temporibus, enim deleniti amet non quidem provident minima dignissimos velit!'}
+		/>
+		<ArticleCnt
+			title={'Test'}
+			subtitle={'A good subtitle'}
+			reverse={true}
+			content={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sapiente vel nam reiciendis. Id explicabo obcaecati ad sapiente porro cum excepturi doloribus minima at expedita. Asperiores suscipit provident impedit corrupti libero. Aliquam adipisci ad dicta numquam. Dolorem sed, ab doloribus temporibus, enim deleniti amet non quidem provident minima dignissimos velit!'}
+		/>
+	</ArticleDisplay>
 </Base>
